@@ -65,7 +65,26 @@
         </nav>
     </header>
     <main>
-        <aside></aside>
+        <aside>
+            <div id="aside menu">
+                  단기북스
+            </div>
+            <ul>
+                <li><a href="#">홈</a></li>
+                <li><a href="#">전체교재</a></li>
+                <li><a href="has-sub">베스트셀러</a>
+                     <ul class="sub menu">
+                        <li><a href="#">주간</a></li>
+                        <li><a href="#">월간</a></li>
+                     </ul>
+                 </li>
+                 <li><a href="#">이벤트</a></li>
+
+
+            </ul>
+
+
+        </aside>
         <div id="main_content">
             <div id="slider">
                 <div id="slider_txt">
@@ -109,31 +128,50 @@
         </div>
     </main>
 
-    <footer>
-        <div class="container">
-            <div class="link_box">
-                <div class="footer_menu">
-                    <ul>
-                        <li><a href="">회사소개</a></li>
-                        <li><a href="">이용약관</a></li>
-                        <li><a href="#" class="bold">개인정보처리방침</a></li>
-                        <li><a href="">강사모집</a></li>
-                    </ul>
-                    <div class="family">
-                        <select name="site" id="site">
-                            <option value="#"></option>
-                            <option value="#"></option>
-                            <option value="#"></option>
-                            <option value="#"></option>
-                            <option value="#"></option>
-                        </select>
-                    </div>
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-top">
+                <ul class="footer-links">
+                    <li><a href="#">회사소개</a></li>
+                    <li>|</li>
+                    <li><a href="#">이용약관</a></li>
+                    <li>|</li>
+                    <li><a href="#" class="bold">개인정보처리방침</a></li>
+                    <li>|</li>
+                    <li><a href="#">강사모집</a></li>
+                </ul>
+
+                <div class="family-site">
+                    <select name="site" id="site">
+                        <option value="#">패밀리 사이트</option>
+                        <option value="#">공단기</option>
+                        <option value="#">기술단기</option>
+                        <option value="#">소방단기</option>
+                        <option value="#">경단기</option>
+                    </select>
                 </div>
-                <div class="company">
-                    <p></p>
-                    <p></p>
+            </div>
+
+            <div class="footer-bottom">
+                <p class="company-name"><strong>(주)에스티유니타스</strong></p>
+                <div class="info-row">
+                    <span>전화번호 : 1670-1419</span>
+                    <span>이메일주소 : STunitas_cs@stunitas.com</span>
+                    <span>주소 : 서울특별시 구로구 경인로 662, 15층 (신도림동, 디큐브시티 제타위동)</span>
                 </div>
+                <div class="info-row">
+                    <span>대표이사 : 김형국</span>
+                    <span>에스티아카데미평생교육원(제1021호)</span>
+                    <span>사업자 등록번호 : 119-86-27573</span>
+                    <span>통신판매업신고 : 2022-서울구로-2373 <a href="#" class="confirm-link">사용자 정보확인</a></span>
+                    <span>호스팅제공자 : &copy; 2022, Amazon Web Services, Inc</span>
+                </div>
+            </div>
+        </div>
     </footer>
+
+
+
 
     <!-- Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>

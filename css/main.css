@@ -91,7 +91,8 @@ nav ul {width: 700px; height: 25px; display: flex; justify-content: space-betwee
 
 /* main */
 main{width: 1140px; height: 2200px;  margin: 0 auto; display: flex; background-color: pink;}
-aside{width: 300px; height: 100%; background-color: greenyellow;}
+aside{width: 300px; height: 100%;  background-color: greenyellow;}
+
 
 #main_content{width: calc(100% - 300px); height: 100%; background-color: azure;}
 
@@ -191,47 +192,91 @@ aside{width: 300px; height: 100%; background-color: greenyellow;}
 
 
 /* footer */
-footer{width: 100%; height: 180px; border-top: 1px solid #ddd;
-}
-footer ul {
-    display: flex; margin: 0 auto; font-size: 12px; font-family: sans-serif; color: aqua;
+footer {
+    width: 100%;
+    height: 180px;
+    border-top: 1px solid #ddd
 }
 
-footer.container {
-    width: 1200px;
+.site-footer {
+    padding: 40px 0;
+    background-color: #fff;
+    /* 배경을 흰색으로 고정 */
+    border-top: 1px solid #e1e1e1;
+    font-family: 'Malgun Gothic', sans-serif;
+    color: #666;
+}
+
+.footer-container {
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 30px 0;
+    padding: 0 20px;
 }
 
-.link_box {
+.footer-top {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    border-bottom:  1px solid #eee;
-    padding-bottom: 15px;
-    margin-bottom: 20px;
+    align-items: flex-end;
+    margin-bottom: 30px;
 }
 
-.footer_menu ul li:after{
-    content: "";
-    width: 1px;
-    height: 12px;
-    background-color: #ddd;
-    margin: 0 12px;
+.footer-links {
+    display: flex;
+    list-style: none;
+    gap: 12px;
+    padding: 0;
+    margin: 0;
 }
 
-.footer_menu ul li:last-child::after{
-    display: none;
-}
-
-.footer_menu ul li a {
+.footer-links a {
     text-decoration: none;
-    color: #000;
+    color: #666;
 }
 
-.family select {
-    padding: 5px 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+.footer-links .bold {
+    font-weight: bold;
     color: #333;
+}
+
+.family-site select {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    width: 180px;
+}
+
+.footer-bottom {
+    line-height: 1.6;
+    font-size: 12px;
+    text-align: left;
+    color: #888;
+}
+
+.company-name {
+    margin-bottom: 4px;
+    font-size: 13px;
+    color: #555;
+    font-weight: bold;
+}
+
+.info-row {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 8px;
+    row-gap: 2px;
+}
+
+/* 세로선(|) 넣는 법 */
+.info-row span::after {
+    content: "|";
+    margin-left: 8px;
+    color: #e1e1e1;
+    font-weight: normal;
+}
+
+.info-row span:last-child::after {
+    content: "";
+}
+
+.confirm-link {
+    text-decoration: underline !important;
 }
