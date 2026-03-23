@@ -184,7 +184,7 @@ aside>ul>li:last-child {
 
 .search_box {
     position: relative;
-    width: 500px;
+    width: 600px;
     /* 검색창 너비 */
 }
 
@@ -211,6 +211,25 @@ aside>ul>li:last-child {
     color: #888;
 }
 
+.best_header{
+    display: flex;
+    justify-content: space-between;
+}
+
+.best_header h3{
+    float: left;
+    display: flex;
+    /* flex-direction: row; */
+}
+
+
+.tabs #time{
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 10px;
+}
+
+
 
 #main_content {
     width: calc(100% - 300px);
@@ -218,25 +237,15 @@ aside>ul>li:last-child {
     /* background-color: azure; */
 }
 
-#booktab {
-    margin: 10px;
+#time {
     display: flex;
     justify-content: center;
 }
 
-#booktab li {
+#time li {
     float: left;
     text-align: center;
-    line-height: 45px;
     cursor: pointer;
-    padding: 5px 50px;
-    border-left: 1px solid #ddd;
-    border-top: 1px solid #ddd;
-    border-bottom: 1px solid #ddd;
-}
-
-#booktab li:last-child {
-    border-right: 1px solid #ddd;
 }
 
 article {
@@ -247,9 +256,9 @@ article {
     position: relative;
 }
 
-#tab2,
-#tab3 {
+#tab2 {
     display: none;
+    /* font-size: 100px; */
 }
 
 .box {
@@ -266,6 +275,87 @@ article {
     text-align: left;
 }
 
+/* 1. 배너 전체 영역 (크기 줄이기 & 배경 이미지 설정) */
+#banner_wrap {
+    width: 100%;
+    /* ✅ 이전 답변처럼 max-width와 margin을 사용해 배너 크기를 균형 있게 줄입니다 */
+    max-width: 1200px; 
+    margin: 50px auto; /* 중앙 정렬 */
+    border-radius: 20px; /* 둥근 모서리 */
+    overflow: hidden;
+
+    /* ✅ 핵심! 배경 이미지 설정 */
+    background-image: url('https://un-static.conects.com/dangimall/common/logo/split_bnr.png'); /* 👈 아까 HTML에서 지운 이미지 경로 */
+    background-size: cover;      /* 이미지가 배너를 꽉 채우도록 비율 조절 */
+    background-position: center; /* 이미지 중앙을 기준으로 배치 */
+    background-repeat: no-repeat;
+    
+    /* 배경색은 이미지 뒤에 깔리는 색상 (선택사항) */
+    background-color: #f1f1f1; 
+}
+
+/* 2. 배너 내부 콘텐츠 (글자 정렬) */
+.banner_content {
+    display: flex;
+    justify-content: flex-start; /* 글자를 왼쪽 끝에 배치 */
+    align-items: center;      /* 세로 중앙 정렬 */
+    padding: 60px 40px;       /* 텍스트 주변 여백 (배너 높이 조절) */
+}
+
+/* 3. 내부 텍스트 스타일 */
+.banner_content p {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333; /* 글자 색상 */
+    margin: 0;
+}
+
+/* 1. 폰트와 기본 정렬 */
+.box {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    /* 왼쪽 정렬 */
+    padding: 10px;
+}
+
+.box img {
+    width: 100%;
+    /* 박스 너비에 맞게 */
+    margin-bottom: 15px;
+}
+
+/* 2. 제목 스타일 (검고 굵게) */
+.box h3 {
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+    margin: 5px 0;
+    line-height: 1.4;
+    text-align: left;
+}
+
+/* 3. 저자/출판사 스타일 (회색) */
+.box .author {
+    font-size: 12px;
+    color: #999;
+    margin-bottom: 10px;
+}
+
+/* 4. 가격 스타일 (파란색 포인트) */
+.box .price {
+    font-size: 15px;
+    font-weight: bold;
+    color: #333;
+}
+
+.box .price span {
+    color: #3498db;
+    /* 파란색 10% */
+    margin-right: 5px;
+}
+
+
 #slider {
     width: 100%;
     height: 350px;
@@ -280,20 +370,18 @@ article {
 #slider_txt {
     width: 250px;
     height: 100%;
-    position: absolute;
-    left: 40px;
-    top: 50%;
-    transform: translateY(-50%);
     display: flex;
     flex-direction: column;
     gap: 15px;
     z-index: 10;
-    padding-top: 50px ;
-    
+    padding-top: 50px;
+    padding-left: 20px;
+
 }
 
 #slider_txt h2 span {
-    color: #007bff; /* 원본과 같은 파란색 */
+    color: #007bff;
+
 }
 
 .swiper-button-next {
