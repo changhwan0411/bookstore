@@ -39,6 +39,7 @@ var new_swiper = new Swiper(".newSwiper", {
     pagination: {
         el: "#new .swiper-pagination",
         clickable: true,
+        type: "fraction",
     },
     navigation: {
         nextEl: "#new .swiper-button-next",

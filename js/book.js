@@ -1,7 +1,7 @@
 async function MainData() {
     const params = new URLSearchParams({
         target: "title",
-        query: "실전 동형 모의고사",
+        query: "2026 동형 모의고사",
         size: 10
     });
     const url = `https://dapi.kakao.com/v3/search/book?${params}`;
@@ -71,7 +71,7 @@ MainData();
 async function bookData() {
     const params = new URLSearchParams({
         target: "title",
-        query: "2026 공무원 ",
+        query: "대한민국 ",
         size: 10
 
     });
@@ -106,8 +106,7 @@ async function bookData() {
             box.innerHTML = `<img src="${data.documents[i].thumbnail}">
                     <h3>${data.documents[i].title}</h3>
                     <h6>${data.documents[i].authors}</h6>
-                    <p>${data.documents[i].price}</p>
-                    <button>click</button>
+                    <p>${data.documents[i].price}원</p>
                     `
         });
 
@@ -241,7 +240,7 @@ async function bookData1() {
     try {
         const queries = [
             { query: "실전 동형 모의고사", sectionId: "tab1" },
-            { query: "공무원", sectionId: "tab2" },
+            { query: "뉴스", sectionId: "tab2" },
 
         ];
 
@@ -260,8 +259,7 @@ async function bookData1() {
                 box.innerHTML = `<img src="${doc.thumbnail}">
                         <h3>${doc.title}</h3>
                         <h6>${doc.authors}</h6>
-                        <p>${doc.contents.substring(0, 60)}</p>
-                        <button>click</button>
+                        <p class="book_price"> <span>${doc.price.toLocaleString()}원</span></p>                        
                         `
             });
         }

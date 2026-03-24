@@ -112,8 +112,8 @@ main {
 }
 
 aside {
-    width: 300px;
-    height: 400px;
+    width: 210px;
+    height: 380px;
     border: 1px solid #e5e7eb;
     border-radius: 15px;
     overflow: hidden;
@@ -124,31 +124,79 @@ aside {
 
 }
 
-.sidebar-header {
+/* 
+.sidebar-header ul li:first-child {
+
+    background-color: #3b82f6;
+    min-height: 90px;
+    color: white;
+    padding: 30px 20px;
+    font-size: 20px;
+    font-weight: bold;
+} */
+
+.sidebar-header ul>li:first-child {
     background-color: #3b82f6;
     color: white;
     padding: 30px 20px;
     font-size: 20px;
     font-weight: bold;
+    border-radius: 10px 10px 0 0;
 }
 
-aside ul {
+/* 1. 메인 메뉴 스타일 (홈, 전체교재, 베스트셀러) */
+.sidebar-header>ul>li>a {
+    display: block;
+    padding: 15px 25px;
+    font-size: 16px;
+    font-weight: 900;
+    color: #000;
+    text-decoration: none;
+}
+
+/* 3. 서브 메뉴 개별 항목 (주간, 월간) */
+.sidebar-header li:nth-of-type(5) a {
+    display: block;
+    padding: 8px 25px;
+    font-size: 15px;
+    font-weight: 500;
+    color: #999;
+    text-decoration: none;
+}
+
+.sidebar-header li:nth-of-type(6) a {
+    display: block;
+    padding: 8px 25px;
+    font-size: 15px;
+    font-weight: 500;
+    color: #999;
+    text-decoration: none;
+}
+
+
+/* 4. 이벤트 메뉴 위쪽 구분선 */
+aside ul li:last-child {
+    border-top: 1px solid #eee;
+    /* margin-top: 10px; */
+    /* padding-top: 10px; */
+}
+
+.sidebar-header ul {
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
-aside ul li {
-    padding: 15px 20px;
-    font-weight: bold;
+.sidebar-header ul li ul.sub-menu li a {
+    display: block;
+    padding: 8px 25px;
+    font-size: 15px;
+    font-weight: 400;
+    color: #a0a0a0;
+    text-decoration: none;
 }
 
 
-aside ul li ul li {
-    font-weight: normal;
-    color: #888;
-    padding: 5px 20px;
-}
 
 aside>ul>li:last-child {
     border-top: 1px solid #eee;
@@ -156,15 +204,60 @@ aside>ul>li:last-child {
     padding-top: 15px;
 }
 
+
+#slider .swiper-slide img {
+    width: 200px;
+    height: 275px;
+}
+
+#slider .swiper-slide h3 {
+    display: flex;
+    font-size: 17px;
+}
+
+#slider .swiper-slide h6 {
+    font-size: 15px;
+
+
+}
+
+#slider .swiper-slide p {
+    font-size: 15px;
+}
+
+.swiper-button-next {
+    border: 1px solid #ddd;
+    border-radius: 0%;
+    left: 100px;
+    right: auto;
+    top: auto;
+    bottom: 100px;
+    color: #888;
+
+}
+
+.swiper-button-prev {
+    border: 1px solid #ddd;
+    border-radius: 0%;
+    left: 30px;
+    top: auto;
+    bottom: 100px;
+    color: #888;
+}
+
+
+
+
 #search {
     width: 100%;
-    padding: 40px 0;
+    padding: 30px 0;
     /* 위아래 여백 */
     background-color: #f8f9fa;
     /* 연한 회색 배경색 */
     border: 1px solid #eee;
     border-radius: 10px;
     margin-bottom: 50px;
+    margin-top: 50px;
     /* 아래 '베스트셀러'와의 간격 */
 }
 
@@ -211,19 +304,30 @@ aside>ul>li:last-child {
     color: #888;
 }
 
-.best_header{
+.best_header {
     display: flex;
     justify-content: space-between;
 }
 
-.best_header h3{
+.best_header h3 {
     float: left;
     display: flex;
+    font-size: 20px;
     /* flex-direction: row; */
 }
 
+#best h6 {
+    font-size: 13px;
+    font-style: inherit;
+}
 
-.tabs #time{
+#best p {
+    font-size: 17px;
+    font-style: normal;
+}
+
+
+.tabs #time {
     display: flex;
     flex-direction: row-reverse;
     gap: 10px;
@@ -279,34 +383,43 @@ article {
 #banner_wrap {
     width: 100%;
     /* ✅ 이전 답변처럼 max-width와 margin을 사용해 배너 크기를 균형 있게 줄입니다 */
-    max-width: 1200px; 
-    margin: 50px auto; /* 중앙 정렬 */
-    border-radius: 20px; /* 둥근 모서리 */
+    max-width: 1200px;
+    margin: 50px auto;
+    /* 중앙 정렬 */
+    border-radius: 20px;
+    /* 둥근 모서리 */
     overflow: hidden;
 
     /* ✅ 핵심! 배경 이미지 설정 */
-    background-image: url('https://un-static.conects.com/dangimall/common/logo/split_bnr.png'); /* 👈 아까 HTML에서 지운 이미지 경로 */
-    background-size: cover;      /* 이미지가 배너를 꽉 채우도록 비율 조절 */
-    background-position: center; /* 이미지 중앙을 기준으로 배치 */
+    background-image: url('https://un-static.conects.com/dangimall/common/logo/split_bnr.png');
+    /* 👈 아까 HTML에서 지운 이미지 경로 */
+    background-size: cover;
+    /* 이미지가 배너를 꽉 채우도록 비율 조절 */
+    background-position: center;
+    /* 이미지 중앙을 기준으로 배치 */
     background-repeat: no-repeat;
-    
+
     /* 배경색은 이미지 뒤에 깔리는 색상 (선택사항) */
-    background-color: #f1f1f1; 
+    background-color: #f1f1f1;
 }
 
 /* 2. 배너 내부 콘텐츠 (글자 정렬) */
 .banner_content {
     display: flex;
-    justify-content: flex-start; /* 글자를 왼쪽 끝에 배치 */
-    align-items: center;      /* 세로 중앙 정렬 */
-    padding: 60px 40px;       /* 텍스트 주변 여백 (배너 높이 조절) */
+    justify-content: flex-start;
+    /* 글자를 왼쪽 끝에 배치 */
+    align-items: center;
+    /* 세로 중앙 정렬 */
+    padding: 60px 40px;
+    /* 텍스트 주변 여백 (배너 높이 조절) */
 }
 
 /* 3. 내부 텍스트 스타일 */
 .banner_content p {
     font-size: 24px;
     font-weight: bold;
-    color: #333; /* 글자 색상 */
+    color: #333;
+    /* 글자 색상 */
     margin: 0;
 }
 
@@ -384,29 +497,11 @@ article {
 
 }
 
-.swiper-button-next {
-    border: 1px solid #ddd;
-    border-radius: 50%;
-    left: 100px;
-    right: auto;
-    top: auto;
-    bottom: 100px;
-    color: #888;
 
 
 
-}
 
 
-
-.swiper-button-prev {
-    border: 1px solid #ddd;
-    border-radius: 50%;
-    left: 30px;
-    top: auto;
-    bottom: 100px;
-    color: #888;
-}
 
 #slider_text .swiper-nevigation-icon {
     width: 50%;
@@ -448,7 +543,7 @@ article {
 #new {
     width: 100%;
     height: 520px;
-
+    position: relative;
 }
 
 #new .swiper-slide {
@@ -457,9 +552,65 @@ article {
 }
 
 #new .swiper-slide img {
-    width: 100%;
-    height: auto;
+    width: 100px;
+    height: 210px;
+    justify-content: space-between;
+
 }
+
+
+#new .swiper-slide h3 {
+    font-size: 15px;
+}
+
+#new .swiper-slide h6 {
+    font-size: 13px;
+    font-style: normal;
+}
+
+#new .swiper-slide p {
+    font-size: 15px;
+    font-style: normal;
+}
+
+#new .swiper-button-next {
+    display: flex;
+}
+
+
+#new .swiper-button-prev {
+    top: 0;
+    left: auto;
+    right: 25px;
+    border-radius: 0;
+    width: 23px;
+    height: 23px;
+}
+
+#new .swiper-button-next {
+    top: 0;
+    left: auto;
+    right: 0;
+    border-radius: 0;
+    width: 23px;
+    height: 23px;
+
+}
+
+#new .swiper-button-prev svg,
+#new .swiper-button-next svg {
+    height: auto;
+    width: 20%;
+}
+
+#new .swiper-pagination {
+    top: 0;
+    text-align: initial;
+    left: auto;
+    right: 55px;
+    width: auto;
+}
+
 
 
 /* footer */
@@ -550,4 +701,48 @@ footer {
 
 .confirm-link {
     text-decoration: underline !important;
+}
+
+.recent-view-bar {
+    position: fixed;
+    top: 180px;
+    /* 위치가 너무 위면 숫자를 키우세요 */
+    right: 40px;
+    /* 오른쪽 여백을 좀 더 줌 */
+    width: 100px;
+    /* 너비를 120 -> 100으로 줄임 */
+    background-color: #fff;
+    border: 1px solid #f0f0f0;
+    /* 테두리 선을 더 연하게 */
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    padding: 15px 8px;
+    /* 안쪽 여백을 줄여 전체 크기 축소 */
+    text-align: center;
+    z-index: 999;
+}
+
+.recent-view-bar h3 {
+    font-size: 13px;
+    /* 글자 크기 축소 */
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 12px;
+}
+
+.recent-content {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    height: 120px;
+    /* 박스 높이를 150 -> 120으로 줄임 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.recent-content p {
+    font-size: 12px;
+    /* 안내 문구 글자 크기 축소 */
+    color: #b0b8c1;
+    line-height: 1.4;
 }
