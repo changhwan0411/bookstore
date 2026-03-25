@@ -1,7 +1,7 @@
 async function MainData() {
     const params = new URLSearchParams({
         target: "title",
-        query: "2026 동형 모의고사",
+        query: "축구",
         size: 10
     });
     const url = `https://dapi.kakao.com/v3/search/book?${params}`;
@@ -71,7 +71,7 @@ MainData();
 async function bookData() {
     const params = new URLSearchParams({
         target: "title",
-        query: "대한민국 ",
+        query: " 영화 ",
         size: 10
 
     });
@@ -117,96 +117,6 @@ async function bookData() {
 }
 
 
-async function bestSellerData() {
-    const params = new URLSearchParams({
-        target: "title",
-        query: "2026 동형 모의고사",
-        size: 10
-    });
-
-    const url = `https://dapi.kakao.com/v3/search/book?${params}`;
-
-    try {
-        const response = await fetch(url, {
-            method: 'GET',
-            headers: {
-                Authorization: "KakaoAK 8b5de02d32a111b75dd290686a1dcbd7"
-            }
-        });
-
-        const data = await response.json();
-
-        const boxElements = document.querySelectorAll(".box");
-
-        boxElements.forEach((box, i) => {
-            const doc = data.documents[i];
-            if (!doc) return;
-
-            box.innerHTML = `
-                 <div class="rank_num">${i + 1}</div>
-                 <img src="${doc.thumbnail}" alt="교재이미지">
-                 <p class="book_title">${doc.title}</p>
-                 <p class="book_author">${doc.authors[0]}</p>
-                 <p class="book_price">10% <span>${doc.price.toLocaleString()}원</span></p>
-`;
-        });
-
-
-
-    } catch (error) {
-        console.error("데이터를 가져오는 중 오류 발생:", error);
-    }
-}
-
-
-// async function bestSellerData() {
-//     const params = new URLSearchParams({
-//         target: "title",
-
-//         query: "2026 동형 모의고사",
-//         size: 10
-//     });
-
-//     const url = `https://dapi.kakao.com/v3/search/book?${params}`;
-
-//     try {
-//         const response = await fetch(url, {
-//             method: 'GET',
-//             headers: {
-
-//                 Authorization: "KakaoAK 8b5de02d32a111b75dd290686a1dcbd7"
-//             }
-//         });
-
-//         if (!response.ok) {
-//             throw new Error(`HTTP 오류! 상태 코드: ${response.status}`);
-//         }
-
-//         const data = await response.json();
-
-
-//         const boxElements = document.querySelectorAll("#best .swiper-slide");
-
-
-//         boxElements.forEach((box, i) => {
-//             const doc = data.documents[i];
-
-//             if (!doc) return;
-
-
-//             box.innerHTML = `
-//         <img src="${doc.thumbnail}" alt="${doc.title}">
-//         <h3>${i + 1}. ${doc.title}</h3>
-//         <h6>${doc.authors.join(', ')}</h6> <p>${doc.price.toLocaleString()}원</p> <button>click</button>
-//       `;
-//         });
-
-//     } catch (error) {
-//         console.log('에러발생', error);
-//     }
-// }
-
-
 
 window.addEventListener('load', () => {
     // bestSellerData();
@@ -239,8 +149,8 @@ async function fetchBooks(query) {
 async function bookData1() {
     try {
         const queries = [
-            { query: "실전 동형 모의고사", sectionId: "tab1" },
-            { query: "뉴스", sectionId: "tab2" },
+            { query: "에이핑크", sectionId: "tab1" },
+            { query: "뉴진스", sectionId: "tab2" },
 
         ];
 
@@ -257,6 +167,7 @@ async function bookData1() {
 
                 // 요소 생성 및 추가
                 box.innerHTML = `<img src="${doc.thumbnail}">
+                <div class="rank_num">${i + 1}</div>
                         <h3>${doc.title}</h3>
                         <h6>${doc.authors}</h6>
                         <p class="book_price"> <span>${doc.price.toLocaleString()}원</span></p>                        
