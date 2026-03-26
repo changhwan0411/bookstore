@@ -32,6 +32,10 @@ main {
     color: #ccc !important;
 }
 
+main .container {
+    display: flex;
+}
+
 /* #mainBook {
     width: 1140px;
     height: 530px;
