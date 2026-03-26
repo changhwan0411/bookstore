@@ -1,0 +1,151 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>api 연습</title>
+
+    <link rel="stylesheet" href="./sub.css">
+
+</head>
+
+<body>
+
+    <header>
+        <h1><a href="index.html">도서 API</a></h1>
+    </header>
+
+    <section>
+        <h3>관련 도서</h3>
+
+        <div class="sub_box"></div>
+
+        <table>
+            <tr>
+                <td>판매가</td>
+                <td class="pricenum"></td>
+            </tr>
+
+            <tr>
+                <td>적립금혜택</td>
+                <td>38p</td>
+            </tr>
+
+            <tr>
+                <td>브랜드</td>
+                <td>피오피스토리</td>
+            </tr>
+
+            <tr>
+                <td>배송구분</td>
+                <td>업체배송</td>
+            </tr>
+
+            <tr>
+                <td>배송비</td>
+                <td>조건부무료배송</td>
+            </tr>
+
+            <tr>
+                <td>수량</td>
+                <td>
+                    <select name="select" id="select">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="2">
+                    <button>바로 구매</button>
+                    <button>장바구니 담기</button>
+                    <button>찜하기</button>
+                    <button>조르기</button>
+                </td>
+            </tr>
+
+        </table>
+
+        <div class="contextbox"></div>
+
+        <div id="tmpBox"></div>
+
+    </section>
+
+    <footer>
+        <p>Copyright ⓒ INTERPARK Corporation All rights reserved.</p>
+    </footer>
+
+    <script>
+        async function bookData() {
+            const REST_API_KEY = '7b2300fc6315bb65035d1a3c7b49b161';
+            const params = new URLSearchParams({
+                target: "title",
+                query: "미움받을 용기"
+            });
+            
+            const url = `https://dapi.kakao.com/v3/search/book?${params}`;
+
+            try {
+                const response = await fetch(url, {
+                    method: 'GET',
+                    headers: {
+                        Authorization: `KakaoAK ${REST_API_KEY}`
+                    }
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP 오류! 상태 코드: ${response.status}`);
+                }
+
+                const data = await response.json();
+
+                // 요소 선택
+                const subBox = document.querySelector(".sub_box");
+                const contextBox = document.querySelector(".contextbox");
+                const priceNum = document.querySelector(".pricenum");
+
+                // 데이터에서 필요한 값 추출
+                const book = data.documents[0];
+                const { title, thumbnail, authors, price, contents } = book;
+
+                // 요소 생성 및 추가
+                subBox.innerHTML = `<h3>${title}</h3>
+                <img src="${thumbnail}">
+                `
+                priceNum.textContent += price + "원";
+
+                contextBox.innerHTML = `<h6>${authors[0]}</h6>
+                <p>${contents}</p>
+                <span>자세히보기</span>
+                `
+            } catch (error) {
+                console.log('에러발생', error);
+            }
+        }
+
+        bookData();
+
+        //메모장으로 sub 텍스트 가져오기, 서버에 올려야 보임
+        document.addEventListener("DOMContentLoaded", async function () {
+            try {
+                const response = await fetch("./sub_txt/txt1.txt");
+                if (!response.ok) {
+                    throw new Error("Network response was not ok");
+                }
+                const data = await response.text();
+                document.getElementById("tmpBox").innerHTML = data;
+
+            } catch (error) {
+                console.error("There was a problem with the fetch operation:", error);
+            }
+        });
+    </script>
+
+</body>
+
+</html>
