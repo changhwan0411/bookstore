@@ -36,6 +36,8 @@ main .container {
     display: flex;
 }
 
+
+
 /* #mainBook {
     width: 1140px;
     height: 530px;
@@ -77,17 +79,62 @@ main .container {
     padding: 50px 0;
 }
 
-/* 3. 왼쪽 이미지 영역 */
-.book-left {
-    width: 450px;
-    text-align: center;
+.info-table td.booktitle {
+    font-size: 26px !important;
+    /* !important는 강제로 최우선 적용합니다 */
+    font-weight: 700 !important;
+    color: #000;
+    line-height: 1.4;
+    padding: 10px 0;
+    margin-left: auto;
 }
 
-.book-left img {
+/* 표 전체적인 정렬과 간격 */
+.info-table {
     width: 100%;
-    border: 1px solid #f0f0f0;
-    /* 미세한 테두리 */
+    border-collapse: collapse;
+    margin-top: 20px;
 }
+
+
+
+.info-table th {
+    text-align: left;
+    width: 100px;
+    /* 왼쪽 항목 너비 고정 */
+    color: #666;
+    /* 항목 이름은 약간 흐리게 */
+    vertical-align: top;
+    padding: 10px 0;
+}
+
+.info-table td {
+    padding: 10px 0;
+    font-size: 16px;
+}
+
+/* 총 상품 금액 강조 */
+.total-num {
+    font-size: 32px;
+    font-weight: 900;
+    color: #333;
+}
+
+
+/* 3. 왼쪽 이미지 영역 */
+.book-left {
+    width: 430px;
+    text-align: center;
+    background-color: #f8f9fa;
+    height: 565px;
+    margin-right: 100px;
+    margin-top: 30px;
+
+}
+
+
+
+
 
 .img-btns {
     display: flex;
@@ -102,6 +149,10 @@ main .container {
     padding: 8px 15px;
     font-size: 13px;
     color: #666;
+}
+
+.bookmain img {
+    width: 70%;
 }
 
 /* 4. 오른쪽 정보 영역 */
@@ -232,4 +283,95 @@ main .container {
     flex: 0.6;
     background: #0054A6;
     color: #fff;
+}
+
+#slider {
+    position: relative;
+    height: 280px;
+    margin-top: 50px;
+}
+
+#slider .swiper {
+    /* width: 100%;
+    height: 100%; */
+    position: relative;
+    margin-top: 50px;
+    padding: 20px 0;
+
+}
+
+#slider .swiper-slide {
+    /* text-align: center;
+    font-size: 18px;
+    background: #444;
+    display: flex;
+    justify-content: center;
+    align-items: center; */
+    background: #fff;
+    /* 흰색 카드 배경 */
+    border-radius: 12px;
+    /* 둥근 테두리 */
+    padding: 15px;
+    /* 카드 내부 여백 */
+    display: flex;
+    /* 가로 배치 (이미지 | 정보) */
+    align-items: center;
+    /* 세로 중앙 정렬 */
+    gap: 15px;
+    /* 이미지와 글자 사이 간격 */
+    /* 카드 그림자 (원본 느낌) */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+
+    /* 중요: 기존의 중앙 정렬 코드 제거 */
+    text-align: left;
+    /* 글자는 왼쪽 정렬 */
+    justify-content: flex-start;
+    /* 왼쪽부터 배치 */
+    height: auto;
+    /* 높이는 내용물에 맞춤 */
+}
+
+#slider .swiper-slide img {
+    /* display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; */
+    width: 90px;                   /* 이미지 너비 고정 */
+    height: 70px;                 /* 이미지 높이 고정 (원본 비율에 맞게) */
+    object-fit: contain;          /* 이미지 잘리거나 찌그러지지 않게 꽉 채움 */
+    background-color: #f8f8f8;     /* 이미지가 박스보다 작을 때 배경색 */
+    border-radius: 4px;
+}
+
+#slider .info {
+    flex: 1;                       /* 남은 공간 다 차지 */
+    display: flex;
+    flex-direction: column;        /* 세로로 쌓음 (제목 / 저자 / 가격) */
+    gap: 4px;                      /* 줄 간격 */
+}
+
+#slider .info h3 {
+    font-size: 15px;
+    font-weight: 600;
+    color: #333;
+    margin: 0;
+    /* 제목 두 줄 넘어가면 ... 처리 (필요시) */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+#slider .info p {
+    font-size: 13px;
+    color: #888;                   /* 흐린 회색 */
+    margin: 0;
+}
+
+/* 가격 강조 */
+#slider .info p:last-child {
+    font-size: 15px;
+    font-weight: 100px;
+    color: #000;
+    margin-top: 5px;
 }

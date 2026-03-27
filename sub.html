@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
+
     <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="./css/common.css">
     <link rel="stylesheet" href="./css/sub.css">
@@ -70,49 +73,65 @@
             </ul>
         </div>
 
-        <div class="container">
-            <div class="book-left">
-                <div class="bookmain"></div>
-                <div class="img-btns">
-                    <button class="btn-zoom">🔍 크게보기</button>
-                    <button class="btn-preview">📖 미리보기</button>
+        <div id="sub_content">
+
+            <div class="container">
+                <div class="book-left">
+                    <div class="bookmain"></div>
+                    <div class="img-btns">
+                        <button class="btn-zoom">🔍 크게보기</button>
+                        <button class="btn-preview">📖 미리보기</button>
+                    </div>
                 </div>
+
+                <div class="book-right">
+
+                    <table class="info-table">
+                        <tr>
+                            <th>타이틀</th>
+                            <td class="booktitle"></td>
+                        </tr>
+                        <tr>
+                            <th>배송비</th>
+                            <td><strong>3,000원</strong><br>20,000원 이상 구매 시 무료배송</td>
+                        </tr>
+                        <tr>
+                            <th>저자</th>
+                            <td class="author"></td>
+                        </tr>
+                        <tr>
+                            <th>출판사</th>
+                            <td class="publish"></td>
+                        </tr>
+                        <tr>
+                            <th>등록일</th>
+                            <td class="date"></td>
+                        </tr>
+                    </table>
+
+                    <div class="total-price">
+                        <span>총 상품 금액</span>
+                        <span class="total-num"></span>
+                    </div>
+
+                    <div class="final-btns">
+                        <button class="btn-cart">장바구니</button>
+                        <button class="btn-buy">바로 구매하기</button>
+                    </div>
+                </div>
+
             </div>
-
-            <div class="book-right">
-
-                <table class="info-table">
-                    <tr>
-                        <th>배송비</th>
-                        <td><strong>3,000원</strong><br>20,000원 이상 구매 시 무료배송</td>
-                    </tr>
-                    <tr>
-                        <th>저자</th>
-                        <td>문동균</td>
-                    </tr>
-                    <tr>
-                        <th>출판사</th>
-                        <td>에스티유니타스</td>
-                    </tr>
-                    <tr>
-                        <th>등록일</th>
-                        <td>2026년 01월 22일</td>
-                    </tr>
-                </table>
-
-                <div class="total-price">
-                    <span>총 상품 금액</span>
-                    <span class="total-num">14,400원</span>
-                </div>
-
-                <div class="final-btns">
-                    <button class="btn-cart">장바구니</button>
-                    <button class="btn-buy">바로 구매하기</button>
-                </div>
-            </div>
-
         </div>
 
+        <div id="slider">
+            <div class="container">
+                <div class="swiper mySwiper">
+                    <div class="swiper-wrapper">
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+        </div>
     </main>
 
 
@@ -163,6 +182,22 @@
             </div>
         </div>
     </footer>
+
+    <script src="./js/subbook.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+
+    <!-- Initialize Swiper -->
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+            slidesPerView: 2,
+            spaceBetween: 30,
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+        });
+    </script>
 </body>
+
 
 </html>

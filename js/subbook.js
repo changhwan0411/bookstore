@@ -1,6 +1,6 @@
 
-async function bookData() {
-    const REST_API_KEY = 'KakaoAK 8b5de02d32a111b75dd290686a1dcbd7';
+async function subbookData() {
+    const REST_API_KEY = '8b5de02d32a111b75dd290686a1dcbd7';
     const params = new URLSearchParams({
         target: "title",
         query: "시험"
@@ -21,44 +21,94 @@ async function bookData() {
         }
 
         const data = await response.json();
+        console.log(data)
 
         // 요소 선택
         const subBox = document.querySelector(".bookmain");
-        const contextBox = document.querySelector(".contextbox");
-        const priceNum = document.querySelector(".pricenum");
+        const bookTitle = document.querySelector(".booktitle")
+        const publishEl = document.querySelector(".publish");
+        const authorEl = document.querySelector(".author");
+        const dateEl = document.querySelector(".date");
+        const priceNum = document.querySelector(".total-num");
 
         // 데이터에서 필요한 값 추출
         const book = data.documents[0];
-        const { title, thumbnail, authors, price, contents } = book;
+        const { title, thumbnail, authors, publisher, datetime, price } = book;
 
         // 요소 생성 및 추가
-        subBox.innerHTML = `<h3>${title}</h3>
+        subBox.innerHTML = `
                 <img src="${thumbnail}">
                 `
-        priceNum.textContent += price + "원";
+        priceNum.textContent += (price + 3000).toLocaleString() + "원";
 
-        contextBox.innerHTML = `<h6>${authors[0]}</h6>
-                <p>${contents}</p>
-                <span>자세히보기</span>
-                `
+        // 요소에 데이터 넣기
+        authorEl.textContent = authors.join(", "); // 저자는 배열인 경우가 많으므로 join 사용
+        publishEl.textContent = publisher;
+        dateEl.textContent = new Date(datetime).toLocaleDateString(); // 날짜 형식 변환
+        bookTitle.textContent = title;
+
+
+
+
+
+
     } catch (error) {
         console.log('에러발생', error);
     }
 }
 
-bookData();
+subbookData();
 
 
-document.addEventListener("DOMContentLoaded", async function () {
+
+async function subbookData1() {
+    const REST_API_KEY = '8b5de02d32a111b75dd290686a1dcbd7';
+    const params = new URLSearchParams({
+        target: "title",
+        query: "최태성"
+    });
+
+    const url = `https://dapi.kakao.com/v3/search/book?${params}`;
+
     try {
-        const response = await fetch("./sub_txt/txt1.txt");
+        const response = await fetch(url, {
+            method: 'GET',
+            headers: {
+                Authorization: `KakaoAK ${REST_API_KEY}`
+            }
+        });
+
         if (!response.ok) {
-            throw new Error("Network response was not ok");
+            throw new Error(`HTTP 오류! 상태 코드: ${response.status}`);
         }
-        const data = await response.text();
-        document.getElementById("tmpBox").innerHTML = data;
+
+        const data = await response.json();
+
+
+        // 데이터 가져오는 부분 (생략, 기존 코드 그대로 사용)
+        const books = data.documents; // 여러 권의 데이터를 가져옴
+        const container = document.querySelector("#slider .swiper-wrapper");
+
+        // 1. 데이터 반복해서 HTML 만들기
+        books.forEach(book => {
+            const { title, thumbnail, authors, price, publisher } = book;
+
+            // 기존에 작성하시던 방식처럼 백틱(`) 활용
+            container.innerHTML += `
+                <div class="swiper-slide">
+                    <img src="${thumbnail}" alt="${title}">
+                    <div class="info">
+                        <h3>${title}</h3>
+                        <p>${authors.join(", ")}</p>
+                        <p>${price.toLocaleString()}원</p>
+                    </div>
+                </div>
+            `;
+        }); 
 
     } catch (error) {
-        console.error("There was a problem with the fetch operation:", error);
+        console.log('에러발생', error);
     }
-});
+} 
+
+subbookData1();
