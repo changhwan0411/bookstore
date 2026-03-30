@@ -104,11 +104,45 @@ async function subbookData1() {
                     </div>
                 </div>
             `;
-        }); 
+        });
+
+        // 탭 클릭 이벤트 (108번 줄 부근에 삽입)
+        const tabs = document.querySelectorAll(".tab-item");
+        const contentsArea = document.querySelectorAll(".tab-content");
+
+        tabs.forEach(tab => {
+            tab.addEventListener("click", () => {
+                const target = tab.dataset.tab;
+
+                // 모든 탭/내용에서 active 클래스 제거
+                tabs.forEach(t => t.classList.remove("active"));
+                contentsArea.forEach(c => c.classList.remove("active"));
+
+                // 클릭한 탭과 해당 ID를 가진 컨텐츠만 active 추가
+                tab.classList.add("active");
+                const targetElement = document.getElementById(target);
+                if (targetElement) {
+                    targetElement.classList.add("active");
+                }
+            });
+        });
+
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const item = header.parentElement; // .accordion-item을 찾음
+
+                // 클릭한 것만 열리고 나머지는 닫히게 하고 싶을 때 (선택 사항)
+                // document.querySelectorAll('.accordion-item').forEach(i => {
+                //     if (i !== item) i.classList.remove('active');
+                // });
+
+                item.classList.toggle('active'); // active 클래스 토글
+            });
+        });
 
     } catch (error) {
         console.log('에러발생', error);
     }
-} 
+}
 
 subbookData1();
