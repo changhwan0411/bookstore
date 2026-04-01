@@ -4,7 +4,7 @@
 
 main {
     width: 1140px;
-    height: 2200px;
+    /* height: 2200px; */
     margin: 0 auto;
 }
 
@@ -391,7 +391,7 @@ main .container {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    height: 1500px;
+    /* height: 1500px; */
     margin: 50px auto;
 
 }
